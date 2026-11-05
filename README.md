@@ -52,32 +52,16 @@ docker-compose.yml
 
 ## 4. Chia việc 6 thành viên
 
-| Người | Vai trò | File phụ trách chính | Gợi ý branch |
-|---|---|---|---|
-| 1 | Core + Docker + tích hợp | `app/public/index.php`, `app/src/Core/`, `docker/`, `docker-compose.yml`, `.gitignore` | `feature/core` |
-| 2 | Login + phân quyền | `app/src/Auth/`, `app/views/login.php` | `feature/auth` |
-| 3 | Sinh viên | `app/src/Students/`, `app/views/students.php` | `feature/students` |
-| 4 | Học phần + đăng ký học | `app/src/Courses/`, `app/views/courses.php`, `app/views/enrollments.php` | `feature/courses` |
-| 5 | Nhập điểm + bảng điểm | `app/src/Grades/`, `app/views/grades.php` | `feature/grades` |
-| 6 | Dashboard, báo cáo, CSS và DB | `app/src/Reports/`, `app/views/dashboard.php`, `app/views/reports.php`, `app/public/assets/css/style.css`, `database/` | `feature/reports` |
+| Người | Vai trò | File phụ trách chính |
+|---|---|---|
+| 1 | Core + Docker + tích hợp | `app/public/index.php`, `app/src/Core/`, `docker/`, `docker-compose.yml`, `.gitignore` | 
+| 2 | Login + phân quyền | `app/src/Auth/`, `app/views/login.php` | 
+| 3 | Sinh viên | `app/src/Students/`, `app/views/students.php` |
+| 4 | Học phần + đăng ký học | `app/src/Courses/`, `app/views/courses.php`, `app/views/enrollments.php` | 
+| 5 | Nhập điểm + bảng điểm | `app/src/Grades/`, `app/views/grades.php` |
+| 6 | Dashboard, báo cáo, CSS và DB | `app/src/Reports/`, `app/views/dashboard.php`, `app/views/reports.php`, `app/public/assets/css/style.css`, `database/` | 
 
-**Quy trình khuyên dùng:** Người 1 đẩy bộ khung và các file tích hợp cơ bản lên `main`. Mỗi thành viên checkout branch từ `main`, chỉ chỉnh file phần mình, commit và push lên GitHub; tạo Pull Request (PR) để người 1 duyệt. Không để 6 người cùng sửa `index.php` hoặc `bootstrap.php`; nếu muốn thêm route, nhắn người 1 tích hợp.
 
-Ví dụ cho thành viên 3:
-
-```bash
-git clone https://github.com/USERNAME/REPO.git
-cd REPO
-git switch -c feature/students
-# Sửa app/src/Students/controller.php và app/views/students.php
-git add app/src/Students/controller.php app/views/students.php
-git commit -m "feat(students): complete student CRUD"
-git push -u origin feature/students
-```
-
-Sau đó mở Pull Request: `feature/students` → `main`.
-
-**Để mỗi người có commit đóng góp thực chất**, mỗi thành viên nên kiểm thử và cải tiến module đã giao (ví dụ thêm bộ lọc, trang sửa riêng, validation, test). Không nên tạo 6 commit giả hoặc xóa/tách rồi commit lại nguyên code mà không có thay đổi có ý nghĩa.
 
 ## 5. Những hạn chế cố ý của bản demo
 
