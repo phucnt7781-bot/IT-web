@@ -1,36 +1,35 @@
 services:
   web:
-    build:
-      context: .
-      dockerfile: docker/php/Dockerfile
+    build: ./docker/php
     ports:
       - "8080:80"
     volumes:
       - ./app:/var/www/html
+      - ./database:/var/www/database:ro
     environment:
       DB_HOST: db
-      DB_NAME: student_management
-      DB_USER: student_user
-      DB_PASSWORD: student_pass_local
+      DB_PORT: 3306
+      DB_NAME: student_manager
+      DB_USER: student_app
+      DB_PASSWORD: student_pass
     depends_on:
       db:
         condition: service_healthy
   db:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: student_management
-      MYSQL_USER: student_user
-      MYSQL_PASSWORD: student_pass_local
-      MYSQL_ROOT_PASSWORD: root_local_only
+      MYSQL_ROOT_PASSWORD: root_demo_change_me
+      MYSQL_DATABASE: student_manager
+      MYSQL_USER: student_app
+      MYSQL_PASSWORD: student_pass
     ports:
-      - "3307:3306"
+      - "127.0.0.1:3307:3306"
     volumes:
-      - db_data:/var/lib/mysql
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - mysql_data:/var/lib/mysql
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
       interval: 5s
+      retries: 20
       timeout: 5s
-      retries: 15
 volumes:
-  db_data:
+  mysql_data:
