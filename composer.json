@@ -1,1 +1,6 @@
-{"name":"studenthub/student-management","description":"Bộ khung bài tập lớn quản lý sinh viên","require":{"php":"^8.3"},"autoload":{"psr-4":{"App\\":"app/src/"}}}
+{
+  "name": "group6/studenthub",
+  "description": "Bai tap lon website quan ly sinh vien va diem hoc tap",
+  "type": "project",
+  "require": {"php": "^8.2", "ext-pdo": "*", "ext-pdo_mysql": "*"}
+}

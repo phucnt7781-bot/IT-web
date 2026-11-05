@@ -1,10 +1,8 @@
 .env
-.env.*
-!.env.example
 vendor/
-node_modules/
 .idea/
 .vscode/
 .DS_Store
+*.log
 app/public/assets/uploads/*
 !app/public/assets/uploads/.gitkeep
